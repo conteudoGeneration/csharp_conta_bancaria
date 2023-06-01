@@ -1,4 +1,6 @@
-﻿namespace conta_bancaria
+﻿using conta_bancaria.model;
+
+namespace conta_bancaria
 {
     internal class Program
     {
@@ -7,6 +9,14 @@
         static void Main(string[] args)
         {
             int opcao;
+
+            // Teste da Classe Conta
+            Conta c1 = new Conta(1, 123, 1, "Adriana", 10000.0f);
+            c1.visualizar();
+            c1.sacar(12000.0f);
+            c1.visualizar();
+            c1.depositar(5000.0f);
+            c1.visualizar();
 
             while (true)
             {
