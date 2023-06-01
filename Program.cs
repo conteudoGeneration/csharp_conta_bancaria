@@ -2,13 +2,16 @@
 {
     internal class Program
     {
+        private static ConsoleKeyInfo consoleKeyInfo;
+
         static void Main(string[] args)
         {
             int opcao;
 
             while (true)
             {
-
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("*****************************************************");
                 Console.WriteLine("                                                     ");
                 Console.WriteLine("                BANCO DO BRAZIL COM Z                ");
@@ -28,13 +31,18 @@
                 Console.WriteLine("*****************************************************");
                 Console.WriteLine("Entre com a opção desejada:                          ");
                 Console.WriteLine("                                                     ");
+                Console.ResetColor();
+
 
                 opcao = Convert.ToInt32(Console.ReadLine());
 
                 if (opcao == 9)
                 {
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("\nBanco do Brazil com Z - O seu Futuro começa aqui!");
                     sobre();
+                    Console.ResetColor();
                     System.Environment.Exit(0);
                 }
 
@@ -43,37 +51,46 @@
                     case 1:
                         Console.WriteLine("Criar Conta\n\n");
 
+                        keyPress();
                         break;
                     case 2:
                         Console.WriteLine("Listar todas as Contas\n\n");
 
+                        keyPress();
                         break;
                     case 3:
                         Console.WriteLine("Consultar dados da Conta - por número\n\n");
 
+                        keyPress();
                         break;
                     case 4:
                         Console.WriteLine("Atualizar dados da Conta\n\n");
 
+                        keyPress();
                         break;
                     case 5:
                         Console.WriteLine("Apagar a Conta\n\n");
 
+                        keyPress();
                         break;
                     case 6:
                         Console.WriteLine("Saque\n\n");
 
+                        keyPress();
                         break;
                     case 7:
                         Console.WriteLine("Depósito\n\n");
 
+                        keyPress();
                         break;
                     case 8:
                         Console.WriteLine("Transferência entre Contas\n\n");
 
+                        keyPress();
                         break;
                     default:
                         Console.WriteLine("\nOpção Inválida!\n");
+                        keyPress();
                         break;
                 }
             }
@@ -81,12 +98,20 @@
 
         private static void sobre()
         {
-           Console.WriteLine("\n*********************************************************");
-           Console.WriteLine("Projeto Desenvolvido por: ");
-           Console.WriteLine("Rafael Queiróz - rafaelproinfo@gmail.com");
-           Console.WriteLine("github.com/rafaelq80");
-           Console.WriteLine("*********************************************************");
+            Console.WriteLine("\n*********************************************************");
+            Console.WriteLine("Projeto Desenvolvido por: ");
+            Console.WriteLine("Rafael Queiróz - rafaelproinfo@gmail.com");
+            Console.WriteLine("github.com/rafaelq80");
+            Console.WriteLine("*********************************************************");
         }
 
+        private static void keyPress()
+        {
+            do
+            {
+                Console.Write("\nPress Enter to continue!");
+                consoleKeyInfo = Console.ReadKey();
+            } while (consoleKeyInfo.Key != ConsoleKey.Enter);
+        }
     }
 }
