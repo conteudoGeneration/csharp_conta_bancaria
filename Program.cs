@@ -51,8 +51,17 @@ namespace conta_bancaria
                 Console.WriteLine("                                                     ");
                 Console.ResetColor();
 
-
-                opcao = Convert.ToInt32(Console.ReadLine());
+                try
+                {
+                    opcao = Convert.ToInt32(Console.ReadLine());
+                }
+                catch (FormatException)
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\nDigite valores inteiros!");
+                    opcao=0;
+                    Console.ResetColor();
+                }
 
                 if (opcao == 9)
                 {
@@ -107,7 +116,9 @@ namespace conta_bancaria
                         keyPress();
                         break;
                     default:
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("\nOpção Inválida!\n");
+                        Console.ResetColor();
                         keyPress();
                         break;
                 }
