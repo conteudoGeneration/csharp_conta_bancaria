@@ -26,6 +26,14 @@ namespace conta_bancaria
             cc1.depositar(5000.0f);
             cc1.visualizar();
 
+            // Teste da Classe Conta Poupança
+            ContaPoupanca cp1 = new ContaPoupanca(3, 123, 2, "Victor", 100000.0f, 15);
+            cp1.visualizar();
+            cp1.sacar(1000.0f);
+            cp1.visualizar();
+            cp1.depositar(5000.0f);
+            cp1.visualizar();
+
             while (true)
             {
                 Console.BackgroundColor = ConsoleColor.Black;
