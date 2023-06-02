@@ -18,6 +18,14 @@ namespace conta_bancaria
             c1.depositar(5000.0f);
             c1.visualizar();
 
+            // Teste da Classe Conta Corrente
+            ContaCorrente cc1 = new ContaCorrente(2, 123, 1, "Mariana", 15000.0f, 1000.0f);
+            cc1.visualizar();
+            cc1.sacar(12000.0f);
+            cc1.visualizar();
+            cc1.depositar(5000.0f);
+            cc1.visualizar();
+
             while (true)
             {
                 Console.BackgroundColor = ConsoleColor.Black;
