@@ -1,6 +1,6 @@
 ﻿namespace conta_bancaria.model
 {
-    internal class Conta
+    internal abstract class Conta
     {
 
         private int numero;
