@@ -115,7 +115,9 @@ namespace conta_bancaria
                         keyPress();
                         break;
                     default:
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("\nOpção Inválida!\n");
+                        Console.ResetColor();
                         keyPress();
                         break;
                 }
