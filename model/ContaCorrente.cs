@@ -1,6 +1,6 @@
 ﻿namespace conta_bancaria.model
 {
-    internal class ContaCorrente : Conta
+    public class ContaCorrente : Conta
     {
         private float limite;
 
@@ -20,7 +20,7 @@
         }
 
 
-        public new bool sacar(float valor)
+        public override bool sacar(float valor)
         {
 
             if (this.getSaldo() + this.getLimite() < valor)
@@ -34,7 +34,7 @@
 
         }
 
-        public new void visualizar()
+        public override void visualizar()
         {
             base.visualizar();
             Console.WriteLine("Limite de Crédito: " + this.limite);
