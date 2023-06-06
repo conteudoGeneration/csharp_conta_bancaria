@@ -54,5 +54,5 @@ ContaPoupanca --> Conta
 ## Print da Tela
 
 <div align="center">
-   <img src="https://i.imgur.com/MFK9yXB.png" title="source: imgur.com" />
+   <img src="https://i.imgur.com/MFK9yXB.png" title="source: imgur.com" width="90%"/>
 </div>
