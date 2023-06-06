@@ -118,15 +118,19 @@ namespace conta_bancaria
                         break;
                     case 2:
                         Console.WriteLine("Listar todas as Contas\n\n");
+
                         contas.listarTodas();
+
                         keyPress();
                         break;
                     case 3:
                         Console.WriteLine("Consultar dados da Conta - por número\n\n");
+
                         Console.WriteLine("Digite o número da conta: ");
                         numero = Convert.ToInt32(Console.ReadLine());
 
                         contas.procurarPorNumero(numero);
+
                         keyPress();
                         break;
                     case 4:
