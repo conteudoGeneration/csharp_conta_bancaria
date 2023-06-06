@@ -146,30 +146,39 @@ namespace conta_bancaria
 
                         Console.WriteLine("Digite o número da conta: ");
                         numero = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine("Digite o Numero da Agência: ");
-                        agencia = Convert.ToInt32(Console.ReadLine());
-                        Console.WriteLine("Digite o Nome do Titular: ");
-                        titular = Console.ReadLine();
 
-                        Console.WriteLine("Digite o Saldo da Conta (R$): ");
-                        saldo = Convert.ToSingle(Console.ReadLine());
-
-                        tipo = contas.retornaTipo(numero);
-
-                        switch (tipo)
+                        if (contas.buscarNaCollection(numero) != null)
                         {
-                            case 1:
-                                Console.WriteLine("Digite o Limite de Crédito (R$): ");
-                                limite = Convert.ToSingle(Console.ReadLine());
-                                contas.atualizar(new ContaCorrente(numero, agencia, tipo, titular, saldo, limite));
-                                break;
-                            case 2:
-                                Console.WriteLine("Digite o dia do Aniversario da Conta: ");
-                                aniversario = Convert.ToInt32(Console.ReadLine());
-                                contas.atualizar(new ContaPoupanca(numero, agencia, tipo, titular, saldo, aniversario));
-                                break;
-                        }
+                            Console.WriteLine("Digite o Numero da Agência: ");
+                            agencia = Convert.ToInt32(Console.ReadLine());
+                            Console.WriteLine("Digite o Nome do Titular: ");
+                            titular = Console.ReadLine();
 
+                            Console.WriteLine("Digite o Saldo da Conta (R$): ");
+                            saldo = Convert.ToSingle(Console.ReadLine());
+
+                            tipo = contas.retornaTipo(numero);
+
+                            switch (tipo)
+                            {
+                                case 1:
+                                    Console.WriteLine("Digite o Limite de Crédito (R$): ");
+                                    limite = Convert.ToSingle(Console.ReadLine());
+                                    contas.atualizar(new ContaCorrente(numero, agencia, tipo, titular, saldo, limite));
+                                    break;
+                                case 2:
+                                    Console.WriteLine("Digite o dia do Aniversario da Conta: ");
+                                    aniversario = Convert.ToInt32(Console.ReadLine());
+                                    contas.atualizar(new ContaPoupanca(numero, agencia, tipo, titular, saldo, aniversario));
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine("\nConta não encontrada!");
+                            Console.ResetColor();
+                        }
 
                         keyPress();
                         break;
@@ -177,6 +186,11 @@ namespace conta_bancaria
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Apagar a Conta\n\n");
                         Console.ResetColor();
+
+                        Console.WriteLine("Digite o número da conta: ");
+                        numero = Convert.ToInt32(Console.ReadLine());
+
+                        contas.deletar(numero);
 
                         keyPress();
                         break;

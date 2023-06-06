@@ -21,7 +21,7 @@ namespace conta_bancaria.model
             this.aniversario = aniversario;
         }
 
-        public new void visualizar()
+        public override void visualizar()
         {
            base.visualizar();
            Console.WriteLine("Aniversário da conta: " + this.aniversario);

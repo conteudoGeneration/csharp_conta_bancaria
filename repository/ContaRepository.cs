@@ -2,7 +2,7 @@
 
 namespace conta_bancaria.repository
 {
-    internal interface ContaRepository
+    public interface ContaRepository
     {
         // CRUD da Conta
         public void procurarPorNumero(int numero);

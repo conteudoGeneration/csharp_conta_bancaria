@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace conta_bancaria.controller
 {
-    internal class ContaController : ContaRepository
+    public class ContaController : ContaRepository
     {
         private List<Conta> listaContas = new List<Conta>();
         int numero = 0;
@@ -33,7 +33,11 @@ namespace conta_bancaria.controller
             if (conta != null)
                 conta.visualizar();
             else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("\nA Conta número: " + numero + " não foi encontrada!");
+                Console.ResetColor();
+            }
         }
 
         public void atualizar(Conta conta)
@@ -49,28 +53,30 @@ namespace conta_bancaria.controller
                 Console.WriteLine("\nA Conta numero: " + conta.getNumero() + " foi atualizada com sucesso!");
             }
             else
-            { 
-                Console.WriteLine("\nA Conta numero: " + conta.getNumero() + " não foi encontrada!");
-
-            }
-
-        procurarPorNumero(conta.getNumero());
-
-            /*var buscaConta = buscarNaCollection(conta.getNumero());
-
-            if (buscaConta != null)
             {
-                listaContas. .set(listaContas.indexOf(buscaConta), conta);
-                Console.WriteLine("\nA Conta numero: " + conta.getNumero() + " foi atualizada com sucesso!");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nA Conta numero: " + conta.getNumero() + " não foi encontrada!");
+                Console.ResetColor();
+
             }
-            else
-                Console.WriteLine("\nA Conta numero: " + conta.getNumero() + " não foi encontrada!");*/
 
         }
 
         public void deletar(int numero)
         {
-            throw new NotImplementedException();
+            var conta = buscarNaCollection(numero);
+
+            if (conta != null)
+            {
+                if (listaContas.Remove(conta) == true)
+                    Console.WriteLine("\nA Conta numero: " + numero + " foi deletada com sucesso!");
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nA Conta numero: " + numero + " não foi encontrada!");
+                Console.ResetColor();
+            }
         }
 
         public void depositar(int numero, float valor)
