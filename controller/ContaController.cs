@@ -79,19 +79,59 @@ namespace conta_bancaria.controller
             }
         }
 
-        public void depositar(int numero, float valor)
-        {
-            throw new NotImplementedException();
-        }
-
         public void sacar(int numero, float valor)
         {
-            throw new NotImplementedException();
+            var conta = buscarNaCollection(numero);
+
+            if (conta != null)
+            {
+                if (conta.sacar(valor) == true)
+                    Console.WriteLine("\nO Saque na Conta numero: " + numero + " foi efetuado com sucesso!");
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nA Conta numero: " + numero + " não foi encontrada!");
+                Console.ResetColor();
+            }
+        }
+
+        public void depositar(int numero, float valor)
+        {
+            var conta = buscarNaCollection(numero);
+
+            if (conta != null)
+            {
+                conta.depositar(valor);
+                Console.WriteLine("\nO Depósito na Conta numero: " + numero + " foi efetuado com sucesso!");
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nA Conta numero: " + numero + " não foi encontrada!");
+                Console.ResetColor();
+            }
         }
 
         public void transferir(int numeroOrigem, int numeroDestino, float valor)
         {
-            throw new NotImplementedException();
+            var contaOrigem = buscarNaCollection(numeroOrigem);
+            var contaDestino = buscarNaCollection(numeroDestino);
+
+            if (contaOrigem != null && contaDestino != null)
+            {
+                if (contaOrigem.sacar(valor) == true)
+                {
+                    contaDestino.depositar(valor);
+                    Console.WriteLine("\nA Transferência foi efetuada com sucesso!");
+                }
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("\nA Conta numero: " + numero + " não foi encontrada!");
+                Console.ResetColor();
+            }
         }
 
         /* Métodos Auxiliares */
