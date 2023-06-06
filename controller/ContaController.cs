@@ -2,6 +2,8 @@
 
 using conta_bancaria.model;
 using conta_bancaria.repository;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace conta_bancaria.controller
 {
@@ -31,12 +33,39 @@ namespace conta_bancaria.controller
             if (conta != null)
                 conta.visualizar();
             else
-               Console.WriteLine("\nA Conta número: " + numero + " não foi encontrada!");
+                Console.WriteLine("\nA Conta número: " + numero + " não foi encontrada!");
         }
 
         public void atualizar(Conta conta)
         {
-            throw new NotImplementedException();
+            var buscaConta = buscarNaCollection(conta.getNumero());
+
+            if (buscaConta != null)
+            {
+                var indexOf = listaContas.IndexOf(buscaConta);
+
+                listaContas[indexOf] = conta;
+
+                Console.WriteLine("\nA Conta numero: " + conta.getNumero() + " foi atualizada com sucesso!");
+            }
+            else
+            { 
+                Console.WriteLine("\nA Conta numero: " + conta.getNumero() + " não foi encontrada!");
+
+            }
+
+        procurarPorNumero(conta.getNumero());
+
+            /*var buscaConta = buscarNaCollection(conta.getNumero());
+
+            if (buscaConta != null)
+            {
+                listaContas. .set(listaContas.indexOf(buscaConta), conta);
+                Console.WriteLine("\nA Conta numero: " + conta.getNumero() + " foi atualizada com sucesso!");
+            }
+            else
+                Console.WriteLine("\nA Conta numero: " + conta.getNumero() + " não foi encontrada!");*/
+
         }
 
         public void deletar(int numero)

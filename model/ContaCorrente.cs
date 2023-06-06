@@ -1,6 +1,6 @@
 ﻿namespace conta_bancaria.model
 {
-    internal class ContaCorrente : Conta
+    public class ContaCorrente : Conta
     {
         private float limite;
 

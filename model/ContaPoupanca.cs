@@ -2,7 +2,7 @@
 
 namespace conta_bancaria.model
 {
-    internal class ContaPoupanca: Conta
+    public class ContaPoupanca : Conta
     {
         private int aniversario;
 
