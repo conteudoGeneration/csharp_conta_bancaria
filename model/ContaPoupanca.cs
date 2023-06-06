@@ -2,11 +2,11 @@
 
 namespace conta_bancaria.model
 {
-    internal class ContaPoupanca: Conta
+    public class ContaPoupanca : Conta
     {
         private int aniversario;
 
-        public ContaPoupanca(int numero, int agencia, int tipo, string titular, float saldo, int aniversario): base(numero, agencia, tipo, titular, saldo)
+        public ContaPoupanca(int numero, int agencia, int tipo, string titular, float saldo, int aniversario) : base(numero, agencia, tipo, titular, saldo)
         {
             this.aniversario = aniversario;
         }
@@ -21,10 +21,10 @@ namespace conta_bancaria.model
             this.aniversario = aniversario;
         }
 
-        public new void visualizar()
+        public override void visualizar()
         {
-           base.visualizar();
-           Console.WriteLine("Aniversário da conta: " + this.aniversario);
+            base.visualizar();
+            Console.WriteLine("Aniversário da conta: " + this.aniversario);
         }
 
     }

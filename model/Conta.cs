@@ -1,6 +1,6 @@
 ﻿namespace conta_bancaria.model
 {
-    internal class Conta
+    public class Conta
     {
 
         private int numero;
@@ -69,7 +69,7 @@
         }
 
 
-        public bool sacar(float valor)
+        public virtual bool sacar(float valor)
         {
 
             if (this.getSaldo() < valor)
@@ -82,12 +82,12 @@
             return true;
         }
 
-        public void depositar(float valor)
+        public virtual void depositar(float valor)
         {
             this.setSaldo(this.saldo + valor);
         }
 
-        public void visualizar()
+        public virtual void visualizar()
         {
 
             string tipo = "";
