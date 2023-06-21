@@ -4,7 +4,7 @@
     {
         private static ConsoleKeyInfo consoleKeyInfo;
 
-        static void Main(string[] args)
+        static void Main()
         {
             int opcao;
 
@@ -41,7 +41,7 @@
                     Console.BackgroundColor = ConsoleColor.Black;
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("\nBanco do Brazil com Z - O seu Futuro começa aqui!");
-                    sobre();
+                    Sobre();
                     Console.ResetColor();
                     System.Environment.Exit(0);
                 }
@@ -53,69 +53,69 @@
                         Console.WriteLine("Criar Conta\n\n");
                         Console.ResetColor();
 
-                        keyPress();
+                        KeyPress();
                         break;
                     case 2:
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Listar todas as Contas\n\n");
                         Console.ResetColor();
 
-                        keyPress();
+                        KeyPress();
                         break;
                     case 3:
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Consultar dados da Conta - por número\n\n");
                         Console.ResetColor();
 
-                        keyPress();
+                        KeyPress();
                         break;
                     case 4:
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Atualizar dados da Conta\n\n");
                         Console.ResetColor();
 
-                        keyPress();
+                        KeyPress();
                         break;
                     case 5:
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Apagar a Conta\n\n");
                         Console.ResetColor();
 
-                        keyPress();
+                        KeyPress();
                         break;
                     case 6:
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Saque\n\n");
                         Console.ResetColor();
 
-                        keyPress();
+                        KeyPress();
                         break;
                     case 7:
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Depósito\n\n");
                         Console.ResetColor();
 
-                        keyPress();
+                        KeyPress();
                         break;
                     case 8:
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Transferência entre Contas\n\n");
                         Console.ResetColor();
 
-                        keyPress();
+                        KeyPress();
                         break;
                     default:
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("\nOpção Inválida!\n");
                         Console.ResetColor();
 
-                        keyPress();
+                        KeyPress();
                         break;
                 }
             }
         }
 
-        private static void sobre()
+        private static void Sobre()
         {
             Console.WriteLine("\n*********************************************************");
             Console.WriteLine("Projeto Desenvolvido por: ");
@@ -124,7 +124,7 @@
             Console.WriteLine("*********************************************************");
         }
 
-        private static void keyPress()
+        private static void KeyPress()
         {
             do
             {
