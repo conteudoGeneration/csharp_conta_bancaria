@@ -2,7 +2,7 @@
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             int opcao;
 
@@ -34,7 +34,7 @@
                 if (opcao == 9)
                 {
                     Console.WriteLine("\nBanco do Brazil com Z - O seu Futuro começa aqui!");
-                    sobre();
+                    Sobre();
                     System.Environment.Exit(0);
                 }
 
@@ -79,7 +79,7 @@
             }
         }
 
-        private static void sobre()
+        private static void Sobre()
         {
            Console.WriteLine("\n*********************************************************");
            Console.WriteLine("Projeto Desenvolvido por: ");
