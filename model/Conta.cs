@@ -7,9 +7,9 @@
         private int agencia;
         private int tipo;
         private string titular;
-        private float saldo;
+        private decimal saldo;
 
-        public Conta(int numero, int agencia, int tipo, string titular, float saldo)
+        public Conta(int numero, int agencia, int tipo, string titular, decimal saldo)
         {
             this.numero = numero;
             this.agencia = agencia;
@@ -18,76 +18,76 @@
             this.saldo = saldo;
         }
 
-        public int getNumero()
+        public int GetNumero()
         {
             return numero;
         }
 
-        public void setNumero(int numero)
+        public void SetNumero(int numero)
         {
             this.numero = numero;
         }
 
-        public int getAgencia()
+        public int GetAgencia()
         {
             return agencia;
         }
 
-        public void setAgencia(int agencia)
+        public void SetAgencia(int agencia)
         {
             this.agencia = agencia;
         }
 
-        public int getTipo()
+        public int GetTipo()
         {
             return tipo;
         }
 
-        public void setTipo(int tipo)
+        public void SetTipo(int tipo)
         {
             this.tipo = tipo;
         }
 
-        public string getTitular()
+        public string GetTitular()
         {
             return titular;
         }
 
-        public void setTitular(string titular)
+        public void SetTitular(string titular)
         {
             this.titular = titular;
         }
 
-        public float getSaldo()
+        public decimal GetSaldo()
         {
             return saldo;
         }
 
-        public void setSaldo(float saldo)
+        public void SetSaldo(decimal saldo)
         {
             this.saldo = saldo;
         }
 
 
-        public bool sacar(float valor)
+        public bool Sacar(decimal valor)
         {
 
-            if (this.getSaldo() < valor)
+            if (this.GetSaldo() < valor)
             {
                 Console.WriteLine("\n Saldo Insuficiente!");
                 return false;
             }
 
-            this.setSaldo(this.saldo - valor);
+            this.SetSaldo(this.saldo - valor);
             return true;
         }
 
-        public void depositar(float valor)
+        public void Depositar(decimal valor)
         {
-            this.setSaldo(this.saldo + valor);
+            this.SetSaldo(this.saldo + valor);
         }
 
-        public void visualizar()
+        public void Visualizar()
         {
 
             string tipo = "";
