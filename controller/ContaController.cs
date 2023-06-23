@@ -7,31 +7,31 @@ using System.Collections.Generic;
 
 namespace conta_bancaria.controller
 {
-    public class ContaController : ContaRepository
+    public class ContaController : IContaRepository
     {
-        private List<Conta> listaContas = new List<Conta>();
+        private readonly List<Conta> listaContas = new();
         int numero = 0;
 
-        public void listarTodas()
+        public void ListarTodas()
         {
             foreach (var conta in listaContas)
             {
-                conta.visualizar();
+                conta.Visualizar();
             }
         }
 
-        public void cadastrar(Conta conta)
+        public void Cadastrar(Conta conta)
         {
             listaContas.Add(conta);
-            Console.WriteLine("\nA Conta número: " + conta.getNumero() + " foi criada com sucesso!");
+            Console.WriteLine("\nA Conta número: " + conta.GetNumero() + " foi criada com sucesso!");
         }
 
-        public void procurarPorNumero(int numero)
+        public void ProcurarPorNumero(int numero)
         {
-            var conta = buscarNaCollection(numero);
+            var conta = BuscarNaCollection(numero);
 
             if (conta != null)
-                conta.visualizar();
+                conta.Visualizar();
             else
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -40,9 +40,9 @@ namespace conta_bancaria.controller
             }
         }
 
-        public void atualizar(Conta conta)
+        public void Atualizar(Conta conta)
         {
-            var buscaConta = buscarNaCollection(conta.getNumero());
+            var buscaConta = BuscarNaCollection(conta.GetNumero());
 
             if (buscaConta != null)
             {
@@ -50,21 +50,21 @@ namespace conta_bancaria.controller
 
                 listaContas[indexOf] = conta;
 
-                Console.WriteLine("\nA Conta numero: " + conta.getNumero() + " foi atualizada com sucesso!");
+                Console.WriteLine("\nA Conta numero: " + conta.GetNumero() + " foi atualizada com sucesso!");
             }
             else
             {
                 Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("\nA Conta numero: " + conta.getNumero() + " não foi encontrada!");
+                Console.WriteLine("\nA Conta numero: " + conta.GetNumero() + " não foi encontrada!");
                 Console.ResetColor();
 
             }
 
         }
 
-        public void deletar(int numero)
+        public void Deletar(int numero)
         {
-            var conta = buscarNaCollection(numero);
+            var conta = BuscarNaCollection(numero);
 
             if (conta != null)
             {
@@ -79,17 +79,17 @@ namespace conta_bancaria.controller
             }
         }
 
-        public void depositar(int numero, float valor)
+        public void Depositar(int numero, decimal valor)
         {
             throw new NotImplementedException();
         }
 
-        public void sacar(int numero, float valor)
+        public void Sacar(int numero, decimal valor)
         {
             throw new NotImplementedException();
         }
 
-        public void transferir(int numeroOrigem, int numeroDestino, float valor)
+        public void Transferir(int numeroOrigem, int numeroDestino, decimal valor)
         {
             throw new NotImplementedException();
         }
@@ -97,17 +97,17 @@ namespace conta_bancaria.controller
         /* Métodos Auxiliares */
 
         /* Método para gerar automaticamente o Número da Conta */
-        public int gerarNumero()
+        public int GerarNumero()
         {
             return ++numero;
         }
 
         /* Método para buscar a Conta na Collection */
-        public Conta? buscarNaCollection(int numero)
+        public Conta? BuscarNaCollection(int numero)
         {
             foreach (var conta in listaContas)
             {
-                if (conta.getNumero() == numero)
+                if (conta.GetNumero() == numero)
                 {
                     return conta;
                 }
@@ -117,13 +117,13 @@ namespace conta_bancaria.controller
         }
 
         /* Método para retornar o Tipo da Conta */
-        public int retornaTipo(int numero)
+        public int RetornarTipo(int numero)
         {
             foreach (var conta in listaContas)
             {
-                if (conta.getNumero() == numero)
+                if (conta.GetNumero() == numero)
                 {
-                    return conta.getTipo();
+                    return conta.GetTipo();
                 }
             }
 

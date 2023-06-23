@@ -7,31 +7,31 @@ namespace conta_bancaria
     {
         private static ConsoleKeyInfo consoleKeyInfo;
 
-        static void Main(string[] args)
+        static void Main()
         {
             // Variáveis de entrada de dados
             int opcao, numero, agencia, tipo, aniversario;
             string? titular;
-            float saldo, limite;
+            decimal saldo, limite;
 
             //Instância da Classe ContaController
-            ContaController contas = new ContaController();
+            ContaController contas = new();
 
             Console.WriteLine("\nCriar Contas\n");
 
-            ContaCorrente cc1 = new ContaCorrente(contas.gerarNumero(), 123, 1, "João da Silva", 1000f, 100.0f);
-            contas.cadastrar(cc1);
+            ContaCorrente cc1 = new(contas.GerarNumero(), 123, 1, "João da Silva", 1000M, 100.0M);
+            contas.Cadastrar(cc1);
 
-            ContaCorrente cc2 = new ContaCorrente(contas.gerarNumero(), 124, 1, "Maria da Silva", 2000f, 100.0f);
-            contas.cadastrar(cc2);
+            ContaCorrente cc2 = new(contas.GerarNumero(), 124, 1, "Maria da Silva", 2000M, 100.0M);
+            contas.Cadastrar(cc2);
 
-            ContaPoupanca cp1 = new ContaPoupanca(contas.gerarNumero(), 125, 2, "Mariana dos Santos", 4000f, 12);
-            contas.cadastrar(cp1);
+            ContaPoupanca cp1 = new(contas.GerarNumero(), 125, 2, "Mariana dos Santos", 4000M, 12);
+            contas.Cadastrar(cp1);
 
-            ContaPoupanca cp2 = new ContaPoupanca(contas.gerarNumero(), 125, 2, "Juliana Ramos", 8000f, 15);
-            contas.cadastrar(cp2);
+            ContaPoupanca cp2 = new(contas.GerarNumero(), 125, 2, "Juliana Ramos", 8000M, 15);
+            contas.Cadastrar(cp2);
 
-            contas.listarTodas();
+            contas.ListarTodas();
 
 
             while (true)
@@ -76,7 +76,7 @@ namespace conta_bancaria
                     Console.BackgroundColor = ConsoleColor.Black;
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("\nBanco do Brazil com Z - O seu Futuro começa aqui!");
-                    sobre();
+                    Sobre();
                     Console.ResetColor();
                     System.Environment.Exit(0);
                 }
@@ -93,6 +93,8 @@ namespace conta_bancaria
                         Console.WriteLine("Digite o Nome do Titular: ");
                         titular = Console.ReadLine();
 
+                        titular ??= string.Empty;
+
                         do
                         {
                             Console.WriteLine("Digite o Tipo da Conta (1-CC ou 2-CP): ");
@@ -100,32 +102,32 @@ namespace conta_bancaria
                         } while (tipo != 1 && tipo != 2);
 
                         Console.WriteLine("Digite o Saldo da Conta (R$): ");
-                        saldo = Convert.ToSingle(Console.ReadLine());
+                        saldo = Convert.ToDecimal(Console.ReadLine());
 
                         switch (tipo)
                         {
                             case 1:
                                 Console.WriteLine("Digite o Limite de Crédito (R$): ");
-                                limite = Convert.ToSingle(Console.ReadLine());
-                                contas.cadastrar(new ContaCorrente(contas.gerarNumero(), agencia, tipo, titular, saldo, limite));
+                                limite = Convert.ToDecimal(Console.ReadLine());
+                                contas.Cadastrar(new ContaCorrente(contas.GerarNumero(), agencia, tipo, titular, saldo, limite));
                                 break;
                             case 2:
                                 Console.WriteLine("Digite o dia do Aniversario da Conta: ");
                                 aniversario = Convert.ToInt32(Console.ReadLine());
-                                contas.cadastrar(new ContaPoupanca(contas.gerarNumero(), agencia, tipo, titular, saldo, aniversario));
+                                contas.Cadastrar(new ContaPoupanca(contas.GerarNumero(), agencia, tipo, titular, saldo, aniversario));
                                 break;
                         }
 
-                        keyPress();
+                        KeyPress();
                         break;
                     case 2:
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Listar todas as Contas\n\n");
                         Console.ResetColor();
 
-                        contas.listarTodas();
+                        contas.ListarTodas();
 
-                        keyPress();
+                        KeyPress();
                         break;
                     case 3:
                         Console.ForegroundColor = ConsoleColor.Green;
@@ -135,9 +137,9 @@ namespace conta_bancaria
                         Console.WriteLine("Digite o número da conta: ");
                         numero = Convert.ToInt32(Console.ReadLine());
 
-                        contas.procurarPorNumero(numero);
+                        contas.ProcurarPorNumero(numero);
 
-                        keyPress();
+                        KeyPress();
                         break;
                     case 4:
                         Console.ForegroundColor = ConsoleColor.Green;
@@ -147,29 +149,31 @@ namespace conta_bancaria
                         Console.WriteLine("Digite o número da conta: ");
                         numero = Convert.ToInt32(Console.ReadLine());
 
-                        if (contas.buscarNaCollection(numero) != null)
+                        if (contas.BuscarNaCollection(numero) != null)
                         {
                             Console.WriteLine("Digite o Numero da Agência: ");
                             agencia = Convert.ToInt32(Console.ReadLine());
                             Console.WriteLine("Digite o Nome do Titular: ");
                             titular = Console.ReadLine();
 
-                            Console.WriteLine("Digite o Saldo da Conta (R$): ");
-                            saldo = Convert.ToSingle(Console.ReadLine());
+                            titular ??= string.Empty;
 
-                            tipo = contas.retornaTipo(numero);
+                            Console.WriteLine("Digite o Saldo da Conta (R$): ");
+                            saldo = Convert.ToDecimal(Console.ReadLine());
+
+                            tipo = contas.RetornarTipo(numero);
 
                             switch (tipo)
                             {
                                 case 1:
                                     Console.WriteLine("Digite o Limite de Crédito (R$): ");
-                                    limite = Convert.ToSingle(Console.ReadLine());
-                                    contas.atualizar(new ContaCorrente(numero, agencia, tipo, titular, saldo, limite));
+                                    limite = Convert.ToDecimal(Console.ReadLine());
+                                    contas.Atualizar(new ContaCorrente(numero, agencia, tipo, titular, saldo, limite));
                                     break;
                                 case 2:
                                     Console.WriteLine("Digite o dia do Aniversario da Conta: ");
                                     aniversario = Convert.ToInt32(Console.ReadLine());
-                                    contas.atualizar(new ContaPoupanca(numero, agencia, tipo, titular, saldo, aniversario));
+                                    contas.Atualizar(new ContaPoupanca(numero, agencia, tipo, titular, saldo, aniversario));
                                     break;
                             }
                         }
@@ -180,7 +184,7 @@ namespace conta_bancaria
                             Console.ResetColor();
                         }
 
-                        keyPress();
+                        KeyPress();
                         break;
                     case 5:
                         Console.ForegroundColor = ConsoleColor.Green;
@@ -190,42 +194,42 @@ namespace conta_bancaria
                         Console.WriteLine("Digite o número da conta: ");
                         numero = Convert.ToInt32(Console.ReadLine());
 
-                        contas.deletar(numero);
+                        contas.Deletar(numero);
 
-                        keyPress();
+                        KeyPress();
                         break;
                     case 6:
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Saque\n\n");
                         Console.ResetColor();
 
-                        keyPress();
+                        KeyPress();
                         break;
                     case 7:
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Depósito\n\n");
                         Console.ResetColor();
 
-                        keyPress();
+                        KeyPress();
                         break;
                     case 8:
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Transferência entre Contas\n\n");
                         Console.ResetColor();
 
-                        keyPress();
+                        KeyPress();
                         break;
                     default:
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("\nOpção Inválida!\n");
                         Console.ResetColor();
-                        keyPress();
+                        KeyPress();
                         break;
                 }
             }
         }
 
-        private static void sobre()
+        private static void Sobre()
         {
             Console.WriteLine("\n*********************************************************");
             Console.WriteLine("Projeto Desenvolvido por: ");
@@ -234,7 +238,7 @@ namespace conta_bancaria
             Console.WriteLine("*********************************************************");
         }
 
-        private static void keyPress()
+        private static void KeyPress()
         {
             do
             {
