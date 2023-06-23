@@ -155,7 +155,7 @@ namespace conta_bancaria.controller
         }
 
         /* Método para retornar o Tipo da Conta */
-        public int RetornaTipo(int numero)
+        public int RetornarTipo(int numero)
         {
             foreach (var conta in listaContas)
             {

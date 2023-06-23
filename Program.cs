@@ -161,7 +161,7 @@ namespace conta_bancaria
                             Console.WriteLine("Digite o Saldo da Conta (R$): ");
                             saldo = Convert.ToDecimal(Console.ReadLine());
 
-                            tipo = contas.RetornaTipo(numero);
+                            tipo = contas.RetornarTipo(numero);
 
                             switch (tipo)
                             {
