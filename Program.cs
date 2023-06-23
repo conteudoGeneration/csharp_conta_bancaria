@@ -6,25 +6,25 @@ namespace conta_bancaria
     {
         private static ConsoleKeyInfo consoleKeyInfo;
 
-        static void Main(string[] args)
+        static void Main()
         {
             int opcao;
 
             // Teste da Classe Conta Corrente
-            ContaCorrente cc1 = new ContaCorrente(2, 123, 1, "Mariana", 15000.0f, 1000.0f);
-            cc1.visualizar();
-            cc1.sacar(12000.0f);
-            cc1.visualizar();
-            cc1.depositar(5000.0f);
-            cc1.visualizar();
+            ContaCorrente cc1 = new(2, 123, 1, "Mariana", 15000.0M, 1000.0M);
+            cc1.Visualizar();
+            cc1.Sacar(12000.0M);
+            cc1.Visualizar();
+            cc1.Depositar(5000.0M);
+            cc1.Visualizar();
 
             // Teste da Classe Conta Poupança
-            ContaPoupanca cp1 = new ContaPoupanca(3, 123, 2, "Victor", 100000.0f, 15);
-            cp1.visualizar();
-            cp1.sacar(1000.0f);
-            cp1.visualizar();
-            cp1.depositar(5000.0f);
-            cp1.visualizar();
+            ContaPoupanca cp1 = new(3, 123, 2, "Victor", 100000.0M, 15);
+            cp1.Visualizar();
+            cp1.Sacar(1000.0M);
+            cp1.Visualizar();
+            cp1.Depositar(5000.0M);
+            cp1.Visualizar();
 
             while (true)
             {
@@ -68,7 +68,7 @@ namespace conta_bancaria
                     Console.BackgroundColor = ConsoleColor.Black;
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("\nBanco do Brazil com Z - O seu Futuro começa aqui!");
-                    sobre();
+                    Sobre();
                     Console.ResetColor();
                     System.Environment.Exit(0);
                 }
@@ -80,68 +80,68 @@ namespace conta_bancaria
                         Console.WriteLine("Criar Conta\n\n");
                         Console.ResetColor();
 
-                        keyPress();
+                        KeyPress();
                         break;
                     case 2:
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Listar todas as Contas\n\n");
                         Console.ResetColor();
 
-                        keyPress();
+                        KeyPress();
                         break;
                     case 3:
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Consultar dados da Conta - por número\n\n");
                         Console.ResetColor();
 
-                        keyPress();
+                        KeyPress();
                         break;
                     case 4:
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Atualizar dados da Conta\n\n");
                         Console.ResetColor();
 
-                        keyPress();
+                        KeyPress();
                         break;
                     case 5:
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Apagar a Conta\n\n");
                         Console.ResetColor();
 
-                        keyPress();
+                        KeyPress();
                         break;
                     case 6:
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Saque\n\n");
                         Console.ResetColor();
 
-                        keyPress();
+                        KeyPress();
                         break;
                     case 7:
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Depósito\n\n");
                         Console.ResetColor();
 
-                        keyPress();
+                        KeyPress();
                         break;
                     case 8:
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("Transferência entre Contas\n\n");
                         Console.ResetColor();
 
-                        keyPress();
+                        KeyPress();
                         break;
                     default:
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("\nOpção Inválida!\n");
                         Console.ResetColor();
-                        keyPress();
+                        KeyPress();
                         break;
                 }
             }
         }
 
-        private static void sobre()
+        private static void Sobre()
         {
             Console.WriteLine("\n*********************************************************");
             Console.WriteLine("Projeto Desenvolvido por: ");
@@ -150,7 +150,7 @@ namespace conta_bancaria
             Console.WriteLine("*********************************************************");
         }
 
-        private static void keyPress()
+        private static void KeyPress()
         {
             do
             {

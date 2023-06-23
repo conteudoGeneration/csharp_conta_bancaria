@@ -2,41 +2,41 @@
 {
     public class ContaCorrente : Conta
     {
-        private float limite;
+        private decimal limite;
 
-        public ContaCorrente(int numero, int agencia, int tipo, string titular, float saldo, float limite) : base(numero, agencia, tipo, titular, saldo)
+        public ContaCorrente(int numero, int agencia, int tipo, string titular, decimal saldo, decimal limite) : base(numero, agencia, tipo, titular, saldo)
         {
             this.limite = limite;
         }
 
-        public float getLimite()
+        public decimal GetLimite()
         {
             return limite;
         }
 
-        public void setLimite(float limite)
+        public void SetLimite(decimal limite)
         {
             this.limite = limite;
         }
 
 
-        public override bool sacar(float valor)
+        public override bool Sacar(decimal valor)
         {
 
-            if (this.getSaldo() + this.getLimite() < valor)
+            if (this.GetSaldo() + this.GetLimite() < valor)
             {
                 Console.WriteLine("\n Saldo Insuficiente!");
                 return false;
             }
 
-            this.setSaldo(this.getSaldo() - valor);
+            this.SetSaldo(this.GetSaldo() - valor);
             return true;
 
         }
 
-        public override void visualizar()
+        public override void Visualizar()
         {
-            base.visualizar();
+            base.Visualizar();
             Console.WriteLine("Limite de Crédito: " + this.limite);
         }
     }
