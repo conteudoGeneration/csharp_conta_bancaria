@@ -83,8 +83,8 @@
         {
            Console.WriteLine("\n*********************************************************");
            Console.WriteLine("Projeto Desenvolvido por: ");
-           Console.WriteLine("Rafael Queiróz - rafaelproinfo@gmail.com");
-           Console.WriteLine("github.com/rafaelq80");
+           Console.WriteLine("Generation Brasil - generation@generation.org");
+           Console.WriteLine("github.com/conteudoGeneration");
            Console.WriteLine("*********************************************************");
         }
 
