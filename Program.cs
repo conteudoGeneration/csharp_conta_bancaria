@@ -79,7 +79,7 @@
             }
         }
 
-        private static void Sobre()
+        static void Sobre()
         {
            Console.WriteLine("\n*********************************************************");
            Console.WriteLine("Projeto Desenvolvido por: ");
