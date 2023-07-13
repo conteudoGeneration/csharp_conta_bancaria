@@ -1,11 +1,12 @@
-﻿namespace conta_bancaria
+namespace conta_bancaria
 {
-    internal class Program
+    public class Program
     {
         private static ConsoleKeyInfo consoleKeyInfo;
 
-        static void Main()
+        static void Main(string[] args)
         {
+
             int opcao;
 
             while (true)
@@ -115,22 +116,25 @@
             }
         }
 
-        private static void Sobre()
+        static void Sobre()
         {
             Console.WriteLine("\n*********************************************************");
             Console.WriteLine("Projeto Desenvolvido por: ");
-            Console.WriteLine("Rafael Queiróz - rafaelproinfo@gmail.com");
-            Console.WriteLine("github.com/rafaelq80");
+            Console.WriteLine("Generation Brasil - generation@generation.org");
+            Console.WriteLine("github.com/conteudoGeneration");
             Console.WriteLine("*********************************************************");
+
         }
 
-        private static void KeyPress()
+        static void KeyPress()
         {
             do
             {
-                Console.Write("\nPress Enter to continue!");
+                Console.Write("\nPressione Enter para Continuar...\"");
                 consoleKeyInfo = Console.ReadKey();
             } while (consoleKeyInfo.Key != ConsoleKey.Enter);
         }
+
     }
+
 }
