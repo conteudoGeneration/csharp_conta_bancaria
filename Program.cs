@@ -1,22 +1,13 @@
-﻿using conta_bancaria.model;
-
 namespace conta_bancaria
 {
-    internal class Program
+    public class Program
     {
         private static ConsoleKeyInfo consoleKeyInfo;
 
-        static void Main()
+        static void Main(string[] args)
         {
-            int opcao;
 
-            // Teste da Classe Conta
-            Conta c1 = new(1, 123, 1, "Adriana", 10000.0M);
-            c1.Visualizar();
-            c1.Sacar(12000.0M);
-            c1.Visualizar();
-            c1.Depositar(5000.0M);
-            c1.Visualizar();
+            int opcao;
 
             while (true)
             {
@@ -118,28 +109,32 @@ namespace conta_bancaria
                         Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("\nOpção Inválida!\n");
                         Console.ResetColor();
+
                         KeyPress();
                         break;
                 }
             }
         }
 
-        private static void Sobre()
+        static void Sobre()
         {
             Console.WriteLine("\n*********************************************************");
             Console.WriteLine("Projeto Desenvolvido por: ");
-            Console.WriteLine("Rafael Queiróz - rafaelproinfo@gmail.com");
-            Console.WriteLine("github.com/rafaelq80");
+            Console.WriteLine("Generation Brasil - generation@generation.org");
+            Console.WriteLine("github.com/conteudoGeneration");
             Console.WriteLine("*********************************************************");
+
         }
 
-        private static void KeyPress()
+        static void KeyPress()
         {
             do
             {
-                Console.Write("\nPress Enter to continue!");
+                Console.Write("\nPressione Enter para Continuar...\"");
                 consoleKeyInfo = Console.ReadKey();
             } while (consoleKeyInfo.Key != ConsoleKey.Enter);
         }
+
     }
+
 }
