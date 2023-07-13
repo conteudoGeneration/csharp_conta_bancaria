@@ -1,140 +1,121 @@
-namespace conta_bancaria
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace conta_bancaria.Model
 {
-    public class Program
+    public class Conta
     {
-        private static ConsoleKeyInfo consoleKeyInfo;
+        private int numero;
+        private int agencia;
+        private int tipo;
+        private string titular;
+        private decimal saldo;
 
-        static void Main(string[] args)
+        public Conta(int numero, int agencia, int tipo, string titular, decimal saldo)
+        {
+            this.numero = numero;
+            this.agencia = agencia;
+            this.tipo = tipo;
+            this.titular = titular;
+            this.saldo = saldo;
+        }
+
+        public int GetNumero()
+        {
+            return numero;
+        }
+
+        public void SetNumero(int numero)
+        {
+            this.numero = numero;
+        }
+
+        public int GetAgencia()
+        {
+            return agencia;
+        }
+
+        public void SetAgencia(int agencia)
+        {
+            this.agencia = agencia;
+        }
+
+        public int GetTipo()
+        {
+            return tipo;
+        }
+
+        public void SetTipo(int tipo)
+        {
+            this.tipo = tipo;
+        }
+
+        public string GetTitular()
+        {
+            return titular;
+        }
+
+        public void SetTitular(string titular)
+        {
+            this.titular = titular;
+        }
+
+        public decimal GetSaldo()
+        {
+            return saldo;
+        }
+
+        public void SetSaldo(decimal saldo)
+        {
+            this.saldo = saldo;
+        }
+
+        public bool Sacar(decimal valor)
         {
 
-            int opcao;
-
-            while (true)
+            if (this.GetSaldo() < valor)
             {
-                Console.BackgroundColor = ConsoleColor.Black;
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine("*****************************************************");
-                Console.WriteLine("                                                     ");
-                Console.WriteLine("                BANCO DO BRAZIL COM Z                ");
-                Console.WriteLine("                                                     ");
-                Console.WriteLine("*****************************************************");
-                Console.WriteLine("                                                     ");
-                Console.WriteLine("            1 - Criar Conta                          ");
-                Console.WriteLine("            2 - Listar todas as Contas               ");
-                Console.WriteLine("            3 - Buscar Conta por Numero              ");
-                Console.WriteLine("            4 - Atualizar Dados da Conta             ");
-                Console.WriteLine("            5 - Apagar Conta                         ");
-                Console.WriteLine("            6 - Sacar                                ");
-                Console.WriteLine("            7 - Depositar                            ");
-                Console.WriteLine("            8 - Transferir valores entre Contas      ");
-                Console.WriteLine("            9 - Sair                                 ");
-                Console.WriteLine("                                                     ");
-                Console.WriteLine("*****************************************************");
-                Console.WriteLine("Entre com a opção desejada:                          ");
-                Console.WriteLine("                                                     ");
-                Console.ResetColor();
-
-
-                opcao = Convert.ToInt32(Console.ReadLine());
-
-                if (opcao == 9)
-                {
-                    Console.BackgroundColor = ConsoleColor.Black;
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("\nBanco do Brazil com Z - O seu Futuro começa aqui!");
-                    Sobre();
-                    Console.ResetColor();
-                    System.Environment.Exit(0);
-                }
-
-                switch (opcao)
-                {
-                    case 1:
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("Criar Conta\n\n");
-                        Console.ResetColor();
-
-                        KeyPress();
-                        break;
-                    case 2:
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("Listar todas as Contas\n\n");
-                        Console.ResetColor();
-
-                        KeyPress();
-                        break;
-                    case 3:
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("Consultar dados da Conta - por número\n\n");
-                        Console.ResetColor();
-
-                        KeyPress();
-                        break;
-                    case 4:
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("Atualizar dados da Conta\n\n");
-                        Console.ResetColor();
-
-                        KeyPress();
-                        break;
-                    case 5:
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("Apagar a Conta\n\n");
-                        Console.ResetColor();
-
-                        KeyPress();
-                        break;
-                    case 6:
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("Saque\n\n");
-                        Console.ResetColor();
-
-                        KeyPress();
-                        break;
-                    case 7:
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("Depósito\n\n");
-                        Console.ResetColor();
-
-                        KeyPress();
-                        break;
-                    case 8:
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("Transferência entre Contas\n\n");
-                        Console.ResetColor();
-
-                        KeyPress();
-                        break;
-                    default:
-                        Console.ForegroundColor = ConsoleColor.Red;
-                        Console.WriteLine("\nOpção Inválida!\n");
-                        Console.ResetColor();
-
-                        KeyPress();
-                        break;
-                }
+                Console.WriteLine("\n Saldo Insuficiente!");
+                return false;
             }
+
+            this.SetSaldo(this.saldo - valor);
+            return true;
         }
 
-        static void Sobre()
+        public void Depositar(decimal valor)
         {
-            Console.WriteLine("\n*********************************************************");
-            Console.WriteLine("Projeto Desenvolvido por: ");
-            Console.WriteLine("Generation Brasil - generation@generation.org");
-            Console.WriteLine("github.com/conteudoGeneration");
-            Console.WriteLine("*********************************************************");
-
+            this.SetSaldo(this.saldo + valor);
         }
 
-        static void KeyPress()
+        public void Visualizar()
         {
-            do
+
+            string tipo = "";
+
+            switch (this.tipo)
             {
-                Console.Write("\nPressione Enter para Continuar...\"");
-                consoleKeyInfo = Console.ReadKey();
-            } while (consoleKeyInfo.Key != ConsoleKey.Enter);
+                case 1:
+                    tipo = "Conta Corrente";
+                    break;
+                case 2:
+                    tipo = "Conta Poupança";
+                    break;
+            }
+
+            Console.WriteLine("\n\n*********************************************************************");
+            Console.WriteLine("Dados da Conta:");
+            Console.WriteLine("*********************************************************************");
+            Console.WriteLine("Numero da Conta: " + this.numero);
+            Console.WriteLine("Agência: " + this.agencia);
+            Console.WriteLine("Tipo da Conta: " + tipo);
+            Console.WriteLine("Titular: " + this.titular);
+            Console.WriteLine("Saldo: " + this.saldo);
+
         }
 
     }
-
 }
