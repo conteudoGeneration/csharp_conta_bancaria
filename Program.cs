@@ -2,7 +2,7 @@
 
 namespace conta_bancaria
 {
-    internal class Program
+    public class Program
     {
         private static ConsoleKeyInfo consoleKeyInfo;
 
