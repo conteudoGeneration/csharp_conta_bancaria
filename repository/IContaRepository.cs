@@ -12,8 +12,8 @@ namespace conta_bancaria.repository
         public void Deletar(int numero);
 
         // Métodos Bancários
-        public void Sacar(int numero, float valor);
-        public void Depositar(int numero, float valor);
-        public void Transferir(int numeroOrigem, int numeroDestino, float valor);
+        public void Sacar(int numero, decimal valor);
+        public void Depositar(int numero, decimal valor);
+        public void Transferir(int numeroOrigem, int numeroDestino, decimal valor);
     }
 }
