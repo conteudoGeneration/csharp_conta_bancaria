@@ -6,7 +6,7 @@ namespace conta_bancaria
     {
         private static ConsoleKeyInfo consoleKeyInfo;
 
-        static void Main()
+        static void Main(string[] args)
         {
             int opcao;
 
