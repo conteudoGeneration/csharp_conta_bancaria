@@ -13,40 +13,67 @@
 ```mermaid
 classDiagram
 class Conta {
+<<Abstract>>
   - numero : int
   - agencia : int
   - tipo : int
   - titular : string
-  - saldo : float
-  + int getNumero()
-  + int getAgencia()
-  + int getTipo()
-  + string getTitular()
-  + float getSaldo()
-  + void setNumero(int numero)
-  + void setAgencia(int agencia)
-  + void setTipo(int tipo)
-  + void setTitular(string titular)
-  + void setSaldo(float saldo)
-  + bool sacar(float valor)
-  + void depositar(float valor)
-  + void visualizar()
+  - saldo : decimal
+  + int GetNumero()
+  + int GetAgencia()
+  + int GetTipo()
+  + string GetTitular()
+  + decimal GetSaldo()
+  + void SetNumero(int numero)
+  + void SetAgencia(int agencia)
+  + void SetTipo(int tipo)
+  + void SetTitular(string titular)
+  + void SetSaldo(decimal saldo)
+  + bool Sacar(decimal valor)
+  + void Depositar(decimal valor)
+  + void Visualizar()
 }
 class ContaCorrente {
-  - limite : float
-  + float getLimite()
-  + void setLimite(float limite)
-  + bool sacar(float valor)
-  + void visualizar()
+  - limite : decimal
+  + decimal GetLimite()
+  + void SetLimite(decimal limite)
+  + bool Sacar(decimal valor)
+  + void Visualizar()
 }
 class ContaPoupanca {
   - aniversario : int
-  + int getAniversario()
-  + void setAniversario(int aniversario)
-  + void visualizar()
+  + int GetAniversario()
+  + void SetAniversario(int aniversario)
+  + void Visualizar()
 }
-ContaCorrente --> Conta
-ContaPoupanca --> Conta
+class IContaRepository{
+<< Interface >>
++ void ProcurarPorNumero(int numero)
++ void ListarTodas()
++ void Cadastrar(Conta conta)
++ void Atualizar(Conta conta)
++ void Deletar(int numero)
++ void Sacar(int numero, decimal valor)
++ void Depositar(int numero, decimal valor)
++ void Transferir(int numeroOrigem, int numeroDestino, decimal valor)
+}
+class ContaController{
++ void ProcurarPorNumero(int numero)
++ void ListarTodas()
++ void Cadastrar(Conta conta)
++ void Atualizar(Conta conta)
++ void Deletar(int numero)
++ void Sacar(int numero, decimal valor)
++ void Depositar(int numero, decimal valor)
++ void Transferir(int numeroOrigem, int numeroDestino, decimal valor)
++ int GerarNumero()
++ Conta BuscarNaCollection(int numero)
++ int RetornaTipo(int numero)
+}
+Conta <|-- ContaCorrente
+Conta <|-- ContaPoupanca
+Conta <.. IContaRepository
+IContaRepository <|.. ContaController
 ```
 
 <br /><br />
