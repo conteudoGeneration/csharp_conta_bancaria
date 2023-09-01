@@ -1,6 +1,4 @@
-﻿using static System.Runtime.InteropServices.JavaScript.JSType;
-
-namespace conta_bancaria.model
+﻿namespace conta_bancaria.model
 {
     public class ContaPoupanca : Conta
     {
