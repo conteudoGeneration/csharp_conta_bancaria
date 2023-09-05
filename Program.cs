@@ -149,7 +149,9 @@ namespace conta_bancaria
                         Console.WriteLine("Digite o número da conta: ");
                         numero = Convert.ToInt32(Console.ReadLine());
 
-                        if (contas.BuscarNaCollection(numero) != null)
+                        var conta = contas.BuscarNaCollection(numero);
+
+                        if (conta != null)
                         {
                             Console.WriteLine("Digite o Numero da Agência: ");
                             agencia = Convert.ToInt32(Console.ReadLine());
@@ -161,7 +163,7 @@ namespace conta_bancaria
                             Console.WriteLine("Digite o Saldo da Conta (R$): ");
                             saldo = Convert.ToDecimal(Console.ReadLine());
 
-                            tipo = contas.RetornarTipo(numero);
+                            tipo = conta.GetTipo();
 
                             switch (tipo)
                             {

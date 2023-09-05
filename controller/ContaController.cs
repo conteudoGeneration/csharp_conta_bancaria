@@ -153,19 +153,5 @@ namespace conta_bancaria.controller
 
             return null;
         }
-
-        /* Método para retornar o Tipo da Conta */
-        public int RetornarTipo(int numero)
-        {
-            foreach (var conta in listaContas)
-            {
-                if (conta.GetNumero() == numero)
-                {
-                    return conta.GetTipo();
-                }
-            }
-
-            return 0;
-        }
     }
 }
